@@ -3,6 +3,7 @@
         (ngSubmit)="onSubmit()">
     <p>
       <label for="login">Login</label>
+
       <input id="login" type="text"
               formControlName="login">
       <span *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.errors?.required">
