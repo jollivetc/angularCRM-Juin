@@ -2,21 +2,25 @@
   <form [formGroup]="loginForm"
         (ngSubmit)="onSubmit()">
     <p>
-      <label for="login">Login</label>
-
-      <input id="login" type="text"
+      <mat-form-field>
+        <mat-label for="login">Login</mat-label>
+        <input matInput id="login" type="text"
               formControlName="login">
+      </mat-form-field>
       <span *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.errors?.required">
           Email requis
       </span>
     </p>
     <p>
-      <label for="password">Password</label>
-      <input id="password" type="password"
-              formControlName="password">
+      <mat-form-field>
+        <mat-label for="password">Password</mat-label>
+        <input matInput id="password" type="password"
+                formControlName="password">
+      </mat-form-field>
     </p>
     <p>
-      <button type="submit" [disabled]="!loginForm.valid">
+      <button mat-button type="submit" [disabled]="!loginForm.valid"
+              color="primary">
         Valider
       </button>
     </p>
