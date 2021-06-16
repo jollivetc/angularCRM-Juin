@@ -10,18 +10,8 @@
 <crm-login></crm-login>
 
 
+<crm-dummy [label]="title"
+    (save)="onSave($event)">
 
-<div [ngClass]="classToApply">
-  {{title}}
-</div>
-
-<div>
-  <ul>
-    <li *ngFor="let name of names">
-      {{name}}
-    </li>
-  </ul>
-</div>
-
-<button (click)="clicked($event)">Click Me</button>
+</crm-dummy>
 

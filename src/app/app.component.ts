@@ -13,4 +13,8 @@ export class AppComponent {
   clicked($event:MouseEvent):void{
     console.log($event)
   }
+
+  onSave($event:string){
+    console.log(`received : ${$event}`);
+  }
 }
