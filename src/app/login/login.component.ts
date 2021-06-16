@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AuthenticationService } from './authentication.service';
 
 function checkPassword(c:AbstractControl): ValidationErrors|null {
   if((c.value as string).indexOf('$')<0){
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor() {
+  constructor(private authent: AuthenticationService) {
     this.loginForm = new FormGroup({
       login: new FormControl('',[Validators.required, Validators.minLength(3)]),
       password: new FormControl('',[Validators.required,
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.loginForm);
+    const user = this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password);
+    console.log(user);
   }
 
   ngOnInit(): void {
