@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './authentication.service';
+import { User } from './model/user';
 
 function checkPassword(c:AbstractControl): ValidationErrors|null {
   if((c.value as string).indexOf('$')<0){
@@ -32,10 +33,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    const user = this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password);
-    if(user !== null){
-      this.router.navigateByUrl('home');
-    }
+    this.authent.authentUser(this.loginForm.value.login, this.loginForm.value.password)
+            .subscribe(
+              (result)=>{
+                if(result !== null && result !== undefined){
+                  this.router.navigateByUrl('home')
+                }
+              },
+              (error)=>{alert(error.error.message)},
+              ()=>{}
+            );
   }
 
   ngOnInit(): void {
