@@ -1,0 +1,9 @@
+<table>
+  <tr *ngFor="let consumer of consumerList">
+    <td>{{consumer.civility}}</td>
+    <td>{{consumer.firstname}}</td>
+    <td>{{consumer.lastname}}</td>
+    <td>{{consumer.email}}</td>
+    <td>{{consumer.phone | phone}}</td>
+  </tr>
+</table>
