@@ -1,18 +1,33 @@
 import { Injectable } from '@angular/core';
+import { User } from './model/user';
+
+const USER_KEY = 'angularcrm.user'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor() { }
+  private user?: User;
 
-  authentUser (login:string, password:string):any{
-    return {
+  constructor() {
+    if(sessionStorage.getItem(USER_KEY) != null){
+      this.user = JSON.parse(sessionStorage.getItem(USER_KEY)!);
+    }
+  }
+
+  get isAuthenticated(): boolean {
+    return this.user !== undefined;
+  }
+
+  authentUser (login:string, password:string):User{
+    this.user = {
       userId: 1,
       login : login,
       firstname: 'John',
       lastname: 'Doe'
     }
+    sessionStorage.setItem(USER_KEY, JSON.stringify(this.user));
+    return this.user;
   }
 }
