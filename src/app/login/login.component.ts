@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { AuthenticationService } from './authentication.service';
 
 function checkPassword(c:AbstractControl): ValidationErrors|null {
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private authent: AuthenticationService, private router: Router) {
+    this.authent.disconnect();
     this.loginForm = new FormGroup({
       login: new FormControl('',[Validators.required, Validators.minLength(3)]),
       password: new FormControl('',[Validators.required,

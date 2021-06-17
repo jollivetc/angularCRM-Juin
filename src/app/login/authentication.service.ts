@@ -20,6 +20,11 @@ export class AuthenticationService {
     return this.user !== undefined;
   }
 
+  disconnect():void {
+    this.user = undefined;
+    sessionStorage.removeItem(USER_KEY);
+  }
+
   authentUser (login:string, password:string):User{
     this.user = {
       userId: 1,
