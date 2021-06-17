@@ -8,6 +8,8 @@ import { map, take } from 'rxjs/operators'
 })
 export class HomeComponent implements OnInit {
 
+  phoneNumber='0123456789';
+
   constructor(private demoObservableService: DemoObservableService) { }
 
   ngOnInit(): void {

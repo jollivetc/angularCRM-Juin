@@ -11,13 +11,15 @@ import { AppMaterialModule } from './app-material.module';
 import { DummyComponent } from './component/dummy/dummy.component';
 import { HomeComponent } from './home/home.component';
 import { JWTIntercepteurService } from './common/jwtintercepteur.service';
+import { PhonePipe } from './common/phone.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DummyComponent,
-    HomeComponent
+    HomeComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
